@@ -11,3 +11,5 @@ print(s)
 b = s.encode('utf-8')
 print(b)
 print(b.decode('utf-8'))
+
+print("This is modifid in workplace and test how to update homeplace")
