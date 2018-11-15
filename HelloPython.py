@@ -1,27 +1,49 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+
+#简单的输入输出
 print('Hello,World!')
 print('The quick brown fox','jumps over','the lazy dog')
 name = input('Please enter your name: ')
 print('hello,',name)
 
+#编码
 s = 'Python-中文'
 print(s)
 b = s.encode('utf-8')
 print(b)
 print(b.decode('utf-8'))
 
-print("This is modifid in workplace and test how to update homeplace")
-
+#列表
 L=[
 	['apple','google','microsoft'],
 	['java','phthon','php'],
 	['adam','bart','lisa']
 	]
 print(L[2][2])
+lisa
+print(L[1][-2:])
+['phthon', 'php']
 
 #函数的参数
+#默认参数
+classEnroll = []
+
+def addEnroll(name,gender,age=15,city='Beijing'):
+    enroll=[name,gender,age,city]
+    classEnroll.append(enroll)
+    
+
+
+
+import math
+
+def quadratic(a,b,c):
+    
+
+
+
 #计算几个数据的乘积，空返回空，数据个数任意
 
 def product(*numbers):
