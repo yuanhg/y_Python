@@ -5,8 +5,9 @@
 #简单的输入输出
 print('Hello,World!')
 print('The quick brown fox','jumps over','the lazy dog')
-name = input('Please enter your name: ')
-print('hello,',name)
+
+yName = input('Please enter your name: ')
+print('Hello,',yNname)
 
 #编码
 s = 'Python-中文'
@@ -15,7 +16,58 @@ b = s.encode('utf-8')
 print(b)
 print(b.decode('utf-8'))
 
+#字典
+yDict = {'name': 'Zara', 'age': 47}
+#字典转为字符串
+str(yDict)
+"{'name': 'Zara', 'age': 47}"
+#字典可以转为元组
+tuple(yDict)
+('name', 'age')
+#字典可以转为元组
+tuple(yDict.values())
+('Zara', 47)
+#字典转为列表
+list(yDict)
+['name', 'age']
+#字典转为列表
+list(yDict.values())
+['Zara', 47]
+
+#元组
+yTuple=(1, 2, 3, 4, 5,6,7,8)
+#元组转为字符串
+yTuple.__str__()
+'(1, 2, 3, 4, 5, 6, 7, 8)'
+#元组转为列表
+list(yTuple)
+[1, 2, 3, 4, 5, 6, 7, 8]
+#元组不可以转为字典*
+
 #列表
+yList=[1, 3, 5, 7, 9, 11, 13]
+#列表转为字符串
+str(yList)
+'[1, 3, 5, 7, 9, 11, 13]'
+#列表转为元组
+tuple(yList)
+(1, 3, 5, 7, 9, 11, 13)
+#列表不可以转为字典*
+
+#字符串
+yStr="(1,2,3)"
+#字符串转为元组
+tuple(eval(yStr))
+(1, 2, 3)
+#字符串转为列表
+list(eval(yStr))
+[1, 2, 3]
+#字符串转为字典
+yStr1="{'name':'yuan', 'age':46}"
+eval(yStr1)
+{'name': 'yuan', 'age': 46}
+
+#复杂列表
 L=[
 	['apple','google','microsoft'],
 	['java','phthon','php'],
