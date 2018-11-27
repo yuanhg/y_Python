@@ -21,13 +21,33 @@ L=[
 	['java','phthon','php'],
 	['adam','bart','lisa']
 	]
+
 print(L[2][2])
 lisa
 print(L[1][-2:])
 ['phthon', 'php']
 
+#打印9*9乘法表
+#把列表L的单词第一个字母大写，并生成一个字典
+#1.波那契数列。1，1，2，3，5。。每一项都是前一项的平方减二；
+#2.卢卡斯数列：4，14，194，37634，。。。每一项都是前一项的平方减二；
+#3.费马数列：3，5，17，257，65537，。。。，每一项都可表为 2^(2^n) + 1 ；
+
+#自然数列求和，平方和，立方和，
+#用 1 到 9 组成一个九位数，使得这个数的第一位能被 1 整除，前两位组成的两位数能被 2 整
+#除，前三位组成的三位数能被 3 整除，以此类推，一直到整个九位数能被 9 整除。
+
+
+
+
 #函数的参数
 #默认参数
+
+
+
+
+
+
 classEnroll = []
 
 def addEnroll(name,gender,age=15,city='Beijing'):
@@ -55,6 +75,16 @@ def product(*numbers):
     else:
         return None
 
+#用递归函数实现f(x)=1*2*3*……
+
+def factorial_recursive(n):
+    if n==1:
+        return 1
+    else:
+        return n*factorial_recursive(n-1)
+
+
+
 #汉诺塔的移动可以用递归函数非常简单地实现
 #请编写move(n, A,B,C)函数，它接收参数n，表示n个盘子;
 #参数A、C，表示3个柱子,B是中间柱；
@@ -78,6 +108,8 @@ def trim(s):
         s = s[:-1]
     return s
 
+
+#素数、自然数、奇偶数、等差数列、等比数列、回数数列
 #杨辉三角
 
 def YHtriangles(layer):
