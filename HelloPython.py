@@ -161,7 +161,32 @@ def trim(s):
     return s
 
 
-#素数、自然数、奇偶数、等差数列、等比数列、回数数列
+#素数、等差数列、等比数列、回数数列
+
+#自然数函数生成器
+def Natural_Number():
+    i = 1
+    while True:
+        yield i
+        i += 1
+    
+#奇、偶数函数生成器
+def Odd_Number():
+    i = 1
+    while True:
+        yield i
+        i += 2
+        
+def Even_Number():
+    i = 2
+    while True:
+        yield i
+        i += 2
+
+#素数函数生成器
+def Prime_Number():
+    i = 1
+
 #杨辉三角
 
 def YHtriangles(layer):
