@@ -162,9 +162,47 @@ def WD_Pi(n=10000):
         n=n-1
     return Pi
 
-
+'''
 #给出一个无限长的自然数构成的字符串S：12345678910111213……，它是由自然数
 #从小到大依次排列出来的。那么给定数字串S1，求它第一次出现的位置
+'''
+#定义字符串生成器函数,字符串S：12345678910111213……
+def NN_String():
+    n=1
+    while True:
+        s=str(n)  #数字转换为字符串
+        for ss in s:
+            yield (ss,n)  #返回一个字符,以及这个字符在第n个自然数中
+        n += 1
+            
+#寻找匹配的数字字符串，默认是第一次匹配处
+def FN(num=1):
+    ts=input("Pls input a Number :")
+    ns=NN_String()
+    ss=''   #构造第一个和输入数字字符串等长的字符串
+    for tts in ts:
+        sslist = next(ns)
+        ss = ss + sslist[0]
+        nn = sslist[1]
+    print(ss, end="")
+    while num >0:
+        while ss != ts:
+            sslist = next(ns)
+            nss = sslist[0]
+            nn = sslist[1]
+            print(nss,end="")
+            ss = ss[1:]+nss
+        print("")
+        print("(",ss," ) in the NUMBER:",nn)
+        num = num -1
+        if num > 0:
+            nnss=next(ns)
+            print(nnss[0], end="")
+            ss = ss[1:]+nnss[0]
+
+   
+    
+
 
 #一个正整数有可能表示为n个连续正整数之和，如15=1+2+3+4+5，15=7+8等。
 #那么给定一个正整数，找出所有连续正整数序列
