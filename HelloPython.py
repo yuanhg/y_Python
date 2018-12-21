@@ -111,8 +111,7 @@ print(L[1][-2:])
 #自然数列求和，平方和，立方和，
 
 
-#π＝3.14159265358979325
-
+#π＝3.1415926 5358 9793    23846 
 #π蒙特卡罗模拟求pi:假设一个矩形的面积是4，矩形内切圆的半径是1，算出圆的面积是π
 import random
 def Pai(num):
@@ -131,16 +130,26 @@ def  Lei_Pi():
         yield 1/i-1/(i+2)
         i = i +4
 
-def Lei_Pi_Num(n=10000):
+def Lei_Pi_Num(n=47454000):  #  47454000时收敛到3.1415926 4457 6215 7，……5358  9793 2
     Pi = 0
     LeiPi = Lei_Pi()
     while n>0:
         Pi = Pi + next(LeiPi)
         n = n -1
     return 4*Pi
-#πNilakantha 级数:
+
+def Lei_Pi_NumS(n=47454000):  #不使用迭代
+    Pi=0
+    i=1
+    while n>0:
+        Pi=Pi+1/i-1/(i+2)
+        i=i+4
+        n=n-1
+    return 4*Pi
+
+#πNilakantha 级数: 
 #公式：  π = 3 + 4/(2*3*4) - 4/(4*5*6) + 4/(6*7*8) - 4/(8*9*10) + 4/(10*11*12) - (4/(12*13*14) ...
-def N_Pi_Num(n=10000):
+def N_Pi_Num(n=44531):   #44531时收敛到3.1415926 5358 9791 3，……9793 2
     Pi=0
     i=2
     while n>0:
@@ -148,10 +157,11 @@ def N_Pi_Num(n=10000):
         i=i+4
         n=n-1
     return 3+4*Pi
+
 #π韦达公式:根号2的表现形式
 #公式：  π = 2 2/sqrt(2) 2/sqrt(2+sqrt(2)) ……
 import math
-def WD_Pi(n=10000):
+def WD_Pi(n=27):  #27时收敛到3.1415926 5358 9794 4，……9793 2
     T2=math.sqrt(2)
     Pi=2*2/T2
     if n==1:
@@ -210,8 +220,15 @@ def FN(num=1):
 #函数的参数
 #默认参数
 
+'''# reduce用法
+1、求listE = [1,2,3,4,5]所有元素之和
+        print(reduce(lambda x,y:x + y, listE))
+2、求listE = [1,2,3,4,5]所有元素中最大值或者最小值
+        print(reduce(lambda x,y:x if x>y else y, listE))
+3、求stringsE = ['abc','abcd','def']中'abc'出现的总次数
+        print(reduce(lambda count, str:count + str.count('abc'), stringsE, 0))
 
-
+'''
 
 
 
