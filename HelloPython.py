@@ -80,11 +80,167 @@ print(L[1][-2:])
 ['phthon', 'php']
 
 #打印9*9乘法表
-#用*号输出字母C的图案
-#要求输出国际象棋棋盘
-#求两个整数的最小公倍数、最小公约数
+def mult99():
+    for i in range(9):
+        for j in range(i+1):
+            print(j+1,"*",i+1,"=",(j+1)*(i+1)," ", end="")
+            if (j+1)*(i+1)<10:
+                print(" ",end="")
+        print("")
+
+#用*号输出圣诞树图案
+def tree():
+    for i in range(10):
+        for j in range(20):
+            print(" ",end="")
+        for j in range(9-i):
+            print(" ",end="")
+        for j in range(1,2*i):
+            print("*",end="")
+        print("")
+    for i in range(5):
+        for j in range(28):
+            print(" ",end="")
+        print("*")
+
+#求两个整数的最小公倍数、最小公因数
+def Gcd_OU(n1,n2):
+    """greatest common divisor function辗转相除法也叫欧几里德算法 """
+    return Gcd_OU(n2, n1 % n2) if n2 > 0 else n1
+
+    """
+    while n1%n2!=0:
+        n1,n2=n2,n1%n2
+    return n2
+    """
+
+
+def Gcd_JZ(n1,n2,i=0):
+    """greatest common divisor function更相减损法也叫也叫更相减损术，是出自《九章算术》 """
+    while n1%2==0 and n2%2==0:
+        n1=n1/2
+        n2=n2/2
+        i+=1
+    while n2!=n1:
+        if n1<n2:
+            n1,n2=n1,n2-n1
+        else:
+            n1,n2=n2,n1-n2
+    return n1 if i==0 else n1*2*i
+    
+
+def lcm(n1,n2):
+    """lowest common multiple function"""
+    return n1 * n2 // gcd(n1, n2)
+
+def lcm_gcd():
+    n1=int(input("please type in the first number:"))
+    n2=int(input("please type in the second number:"))
+    if n2>n1:
+        n1, n2=n2, n1
+    for i in range(2, n1+1):
+        if n2*i%n1==0:
+            print("the lcm is:", n2*i)
+            break
+    l1=[]
+    l2=[]
+    for i in range(1,n1+1):
+        if n1%i==0:
+            l1.append(i)
+    for i in range(1,n2+1):
+        if n2%i==0:
+            l2.append(i)
+    if len(l2)>len(l1):
+        l1, l2=l2, l1
+    for i in range(len(l2)):
+        for j in range(len(l1)):
+            if l2[-1-i]==l1[-1-j]:
+                print("the gcd is:", l2[-1-i])
+                break
+        if l2[-1-i]==l1[-1-j]:
+            break
+            
+  
 #将一个正整数分解质因数。例如：输入90,打印出90=2*3*3*5
+        
 #用 1 到 9 组成一个九位数，使得这个数的第一位能被 1 整除，前两位组成的两位数能被 2 整除，前三位组成的三位数能被 3 整除，以此类推，一直到整个九位数能被 9 整除。
+'''           
+def div9():
+    n9n=n9()
+    for n in n9n:
+        if n//10000000%2 == 0 and n//1000000%3 == 0 and n//100000%4 == 0 and n//10000%5 ==0 and n//1000%6 ==0 and n//100%7 ==0 and n//10%8 ==0 and n%9 == 0:
+            print(n)
+
+def div9():
+    for n in range(123456789,987654321):
+        if n%1000000000%9 == 0 and n%100000000%8 == 0 and n%10000000%7 == 0 and n%1000000%6 ==0 and n%100000%5 ==0 and n%10000%4 ==0 and n%1000%3 ==0 and n%100%2==0:
+            print(n)
+'''
+from datetime import datetime
+def divi9():
+    begin=datetime.now()
+    for n9 in range(123456789,987654321):
+        if   str(n9).count("0")>0:
+            n9 +=1
+            continue
+        elif str(n9).count("1")>1:
+            n9 +=1
+            continue
+        elif str(n9).count("2")>1:
+            n9 +=1
+            continue
+        elif str(n9).count("3")>1:
+            n9 +=1
+            continue
+        elif str(n9).count("4")>1:
+            n9 +=1
+            continue
+        elif str(n9).count("5")>1:
+            n9 +=1
+            continue
+        elif str(n9).count("6")>1:
+            n9 +=1
+            continue
+        elif str(n9).count("7")>1:
+            n9 +=1
+            continue
+        elif str(n9).count("8")>1:
+            n9 +=1
+            continue
+        elif str(n9).count("9")>1:
+            n9 +=1
+            continue
+        
+        '''''
+        if n9%9 != 0:
+            continue
+        elif n9//10%8 !=0:
+            continue
+        elif n9//100%7 !=0:
+            continue
+        elif  n9//1000%6 !=0:
+            continue
+        elif n9//10000%5 !=0:
+            continue
+        elif n9//100000%4 != 0:
+            continue
+        elif n9//1000000%3 != 0:
+            continue
+        elif n9//10000000%2 != 0:
+            continue
+        else:
+            print("time lasting:",datetime.now()-begin)
+            print(n9)
+'''
+        if n9//10000000%2 == 0 and n9//1000000%3 == 0 and n9//100000%4 == 0 and n9//10000%5 ==0 and n9//1000%6 ==0 and n9//100%7 ==0 and n9//10%8 ==0 and n9%9 == 0:
+            print("time lasting:",datetime.now()-begin)
+            print(n9)
+        n9 +=1
+    print("the finish time last is :",datetime.now()-begin)
+
+if __name__ == "__main__" :
+    divi9()
+
 #自然数内的前50个素数，每行显示10个
 #有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？
 #十进制转16进制,十六进制转十进制
@@ -147,6 +303,18 @@ def Lei_Pi_NumS(n=47454000):  #不使用迭代
         n=n-1
     return 4*Pi
 
+def Lei_Pi_NumS_N():  #33558529不使用迭代
+    Pi=0
+    i=1
+    k=0
+    Pi_N=3    
+    while Pi_N - Pi != 0:
+        Pi_N=Pi
+        Pi=Pi+1/i-1/(i+2)
+        i=i+4
+        k+=1
+    return 4*Pi,k
+
 #πNilakantha 级数: 
 #公式：  π = 3 + 4/(2*3*4) - 4/(4*5*6) + 4/(6*7*8) - 4/(8*9*10) + 4/(10*11*12) - (4/(12*13*14) ...
 def N_Pi_Num(n=44531):   #44531时收敛到3.1415926 5358 9791 3，……9793 2
@@ -156,7 +324,33 @@ def N_Pi_Num(n=44531):   #44531时收敛到3.1415926 5358 9791 3，……9793 2
         Pi=Pi+1/(i*(i+1)*(i+2))-1/((i+2)*(i+3)*(i+4))
         i=i+4
         n=n-1
-    return 3+4*Pi
+        print("%.53f"%(3+4*Pi),end='\r')
+    print()
+    print("%.53f"%(3+4*Pi))
+
+def N_Pi_Num_N():   #7658时收敛到3.1415926 5358 9722 5，……9793 2
+    Pi=0
+    i=2
+    k=0
+    Pi_N=3
+    while (Pi_N  - Pi )!= 0:
+        Pi_N=Pi
+        Pi=Pi+4/(i*(i+1)*(i+2))-4/((i+2)*(i+3)*(i+4))
+        i=i+4
+        k+=1
+    return 3+Pi,k
+
+def N_Pi_Num_N():   #7657时收敛到3.1415926 5358 9722 5，……9793 2
+    Pi=0
+    Pi_N=4/2/3/4-4/4/5/6
+    i=2
+    k=0
+    while Pi_N > Pi :
+        Pi=Pi+4/(i*(i+1)*(i+2))-4/((i+2)*(i+3)*(i+4))
+        Pi_N=Pi_N+4/((i+4)*(i+5)*(i+6))-4/((i+6)*(i+7)*(i+8))
+        i=i+4
+        k+=1
+    return 3+Pi,k
 
 #π韦达公式:根号2的表现形式
 #公式：  π = 2 2/sqrt(2) 2/sqrt(2+sqrt(2)) ……
@@ -172,6 +366,18 @@ def WD_Pi(n=27):  #27时收敛到3.1415926 5358 9794 4，……9793 2
         n=n-1
     return Pi
 
+import math
+def WD_Pi_N():  #计算收敛时的Pi值和迭代次数
+    T2=math.sqrt(2)
+    Pi=2*2/T2
+    Pi_N=3
+    i=0
+    while Pi != Pi_N:
+        Pi_N=Pi
+        T2=math.sqrt(2+T2)
+        Pi=Pi*2/T2
+        i +=1
+    return Pi,i
 '''
 #给出一个无限长的自然数构成的字符串S：12345678910111213……，它是由自然数
 #从小到大依次排列出来的。那么给定数字串S1，求它第一次出现的位置
