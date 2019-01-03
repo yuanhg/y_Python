@@ -114,7 +114,6 @@ def Gcd_OU(n1,n2):
     return n2
     """
 
-
 def Gcd_JZ(n1,n2,i=0):
     """greatest common divisor function更相减损法也叫也叫更相减损术，是出自《九章算术》 """
     while n1%2==0 and n2%2==0:
@@ -122,10 +121,7 @@ def Gcd_JZ(n1,n2,i=0):
         n2=n2/2
         i+=1
     while n2!=n1:
-        if n1<n2:
-            n1,n2=n1,n2-n1
-        else:
-            n1,n2=n2,n1-n2
+        n1,n2=n2,abs(n1-n2)
     return n1 if i==0 else n1*2*i
     
 
@@ -134,6 +130,8 @@ def lcm(n1,n2):
     return n1 * n2 // gcd(n1, n2)
 
 def lcm_gcd():
+    '''硬算。公倍数用最小数的倍数逐个测试；'''
+    '''公因数用两个数的因数分解，从最大开始往最小比较，找到第一个一样的'''
     n1=int(input("please type in the first number:"))
     n2=int(input("please type in the second number:"))
     if n2>n1:
@@ -159,88 +157,93 @@ def lcm_gcd():
                 break
         if l2[-1-i]==l1[-1-j]:
             break
-            
-  
-#将一个正整数分解质因数。例如：输入90,打印出90=2*3*3*5
         
-#用 1 到 9 组成一个九位数，使得这个数的第一位能被 1 整除，前两位组成的两位数能被 2 整除，前三位组成的三位数能被 3 整除，以此类推，一直到整个九位数能被 9 整除。
-'''           
+#用 1 到 9 组成一个九位数，使得这个数的第一位能被 1 整除，前两位组成的两位数能被 2 整除，以此类推，一直到整个九位数能被 9 整除。
 def div9():
-    n9n=n9()
-    for n in n9n:
-        if n//10000000%2 == 0 and n//1000000%3 == 0 and n//100000%4 == 0 and n//10000%5 ==0 and n//1000%6 ==0 and n//100%7 ==0 and n//10%8 ==0 and n%9 == 0:
-            print(n)
+    '''使用字符串方式，逐个找出符合条件的N位数，直到9位数'''
+    n=[["1","2","3","4","5","6","7","8","9"]]
+    for i in range(1,9):
+        n.append([])
+    for i in range(1,9):
+        for j in n[i-1]:
+            for k in n[0]:
+                if k not in j and int(j+k)%(i+1)==0:                    
+                    n[i].append(j+k)
+    for i in range(9):
+        print(n[i])
 
-def div9():
-    for n in range(123456789,987654321):
-        if n%1000000000%9 == 0 and n%100000000%8 == 0 and n%10000000%7 == 0 and n%1000000%6 ==0 and n%100000%5 ==0 and n%10000%4 ==0 and n%1000%3 ==0 and n%100%2==0:
-            print(n)
-'''
+def div10():
+    '''使用字符串方式，逐个找出符合条件的N位数，直到n位数'''
+    n=["0","1","2","3","4","5","6","7","8","9"]
+    L=[["1","2","3","4","5","6","7","8","9"]]
+    i=1
+    while True:
+        L.append([])
+        flage =0
+        for j in L[i-1]:
+            for k in n:
+                if k not in j and int(j+k)%(i+1)==0:                    
+                    L[i].append(j+k)
+                    flage = 1
+        if flage == 0:
+            break
+        else:
+            i += 1
+    for i in range(len(L)):
+        print(L[i])
+      
 from datetime import datetime
 def divi9():
+    '''硬除，直到找到9位数'''
     begin=datetime.now()
-    for n9 in range(123456789,987654321):
-        if   str(n9).count("0")>0:
-            n9 +=1
+    for n in range(123456789,987654321):
+        if   str(n).count("0")>0:
             continue
-        elif str(n9).count("1")>1:
-            n9 +=1
+        elif str(n).count("1")>1:
             continue
-        elif str(n9).count("2")>1:
-            n9 +=1
+        elif str(n).count("2")>1:
             continue
-        elif str(n9).count("3")>1:
-            n9 +=1
+        elif str(n).count("3")>1:
             continue
-        elif str(n9).count("4")>1:
-            n9 +=1
+        elif str(n).count("4")>1:
             continue
-        elif str(n9).count("5")>1:
-            n9 +=1
+        elif str(n).count("5")>1:
             continue
-        elif str(n9).count("6")>1:
-            n9 +=1
+        elif str(n).count("6")>1:
             continue
-        elif str(n9).count("7")>1:
-            n9 +=1
+        elif str(n).count("7")>1:
             continue
-        elif str(n9).count("8")>1:
-            n9 +=1
+        elif str(n).count("8")>1:
             continue
-        elif str(n9).count("9")>1:
-            n9 +=1
+        elif str(n).count("9")>1:
             continue
-        
-        '''''
-        if n9%9 != 0:
+
+        if n%9 != 0:
             continue
-        elif n9//10%8 !=0:
+        elif n//10%8 !=0:
             continue
-        elif n9//100%7 !=0:
+        elif n//100%7 !=0:
             continue
-        elif  n9//1000%6 !=0:
+        elif  n//1000%6 !=0:
             continue
-        elif n9//10000%5 !=0:
+        elif n//10000%5 !=0:
             continue
-        elif n9//100000%4 != 0:
+        elif n//100000%4 != 0:
             continue
-        elif n9//1000000%3 != 0:
+        elif n//1000000%3 != 0:
             continue
-        elif n9//10000000%2 != 0:
+        elif n//10000000%2 != 0:
             continue
         else:
             print("time lasting:",datetime.now()-begin)
-            print(n9)
-'''
-        if n9//10000000%2 == 0 and n9//1000000%3 == 0 and n9//100000%4 == 0 and n9//10000%5 ==0 and n9//1000%6 ==0 and n9//100%7 ==0 and n9//10%8 ==0 and n9%9 == 0:
-            print("time lasting:",datetime.now()-begin)
-            print(n9)
-        n9 +=1
+            print(n)
+
     print("the finish time last is :",datetime.now()-begin)
 
 if __name__ == "__main__" :
     divi9()
-
+    
+#将一个正整数分解质因数。例如：输入90,打印出90=2*3*3*5
 #自然数内的前50个素数，每行显示10个
 #有1、2、3、4个数字，能组成多少个互不相同且无重复数字的三位数？都是多少？
 #十进制转16进制,十六进制转十进制
@@ -250,15 +253,7 @@ if __name__ == "__main__" :
 #利用条件运算符的嵌套来完成此题：学习成绩>=90分的同学用A表示，60-89分之间的用B表示，60分以下的用C表示。 
 #输入一行字符，分别统计出其中英文字母、空格、数字和其它字符的个数。 
 #一球从100米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第10次落地时，共经过多少米？第10次反弹多高？
-'''
-企业发放的奖金根据利润提成。利润(I)
-低于或等于10万元时，奖金可提10%；
-利润高于10万元，低于20万元时，低于10万元的部分按10%提成，高于10万元的部分，可提成7.5%；
-20万到40万之间时，高于20万元的部分，可提成5%；
-40万到60万之间时高于40万元的部分，可提成3%；
-60万到100万之间时，高于60万元的部分，可提成1.5%;
-高于100万元时，超过100万元的部分按1%提成，从键盘输入当月利润I，求应发放奖金总数？
-'''
+#个人所得税扣除
 #把列表L的单词第一个字母大写，并生成一个字典
 #1.波那契数列。1，1，2，3，5。。每一项都是前二项的和；（兔子问题）
 #2.卢卡斯数列：4，14，194，37634，。。。每一项都是前一项的平方减二；
@@ -378,30 +373,34 @@ def WD_Pi_N():  #计算收敛时的Pi值和迭代次数
         Pi=Pi*2/T2
         i +=1
     return Pi,i
-'''
-#给出一个无限长的自然数构成的字符串S：12345678910111213……，它是由自然数
-#从小到大依次排列出来的。那么给定数字串S1，求它第一次出现的位置
-'''
+
+
+#给出一个无限长的自然数从小到大依次排列构成的字符串S：12345678910111213……，那么给定数字串S1，求它第一次出现的位置
+
 #定义字符串生成器函数,字符串S：12345678910111213……
 def NN_String():
+    '''每次返回一个数字字符s，以及这个数字字符是第几个自然数中的字符，n表示'''
     n=1
     while True:
-        s=str(n)  #数字转换为字符串
-        for ss in s:
-            yield (ss,n)  #返回一个字符,以及这个字符在第n个自然数中
+        ns=str(n)  #数字转换为字符串
+        for s in ns:
+            yield (s,n)  #返回一个字符,以及这个字符在第n个自然数中
         n += 1
             
 #寻找匹配的数字字符串，默认是第一次匹配处
 def FN(num=1):
+    '''num表示找到几个匹配的地方'''
     ts=input("Pls input a Number :")
     ns=NN_String()
-    ss=''   #构造第一个和输入数字字符串等长的字符串
+    ss=''
+    '''构造第一个和输入数字字符串等长的字符串'''
     for tts in ts:
         sslist = next(ns)
         ss = ss + sslist[0]
-        nn = sslist[1]
+    '''连续输出输出字符串'''
     print(ss, end="")
     while num >0:
+        '''如果字符串和目标字符串不匹配，字符串自动向后滑动1位，直至相等'''
         while ss != ts:
             sslist = next(ns)
             nss = sslist[0]
@@ -411,10 +410,11 @@ def FN(num=1):
         print("")
         print("(",ss," ) in the NUMBER:",nn)
         num = num -1
+        '''如果num大于0，则字符串向后滑动一位，再开始下一轮比较'''
         if num > 0:
-            nnss=next(ns)
-            print(nnss[0], end="")
-            ss = ss[1:]+nnss[0]
+            nss=next(ns)
+            print(nss[0], end="")
+            ss = ss[1:]+nss[0]
 
    
     
