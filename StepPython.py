@@ -10,9 +10,7 @@ with open('D:/Pi10000.txt','r')    as  pif:
     for line in pif:
         print(line)
 
-with open('D:/Pi10000.txt','rb')    as  pif:
-    for line in pif:
-        print(line)
+
 
 def fninpi():
     ss=str(input("Pls input a Number :"))
