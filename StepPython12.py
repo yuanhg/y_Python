@@ -1,6 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+with open('D:/见与不见.txt','r')    as  pif:
+    for line in pif:
+        if "那里" in line:
+            print(line)
+
+with open('D:/Pi1000.txt','r')    as  pif:
+    for line in pif:
+        print(len(line))
+        print(line)
+        
+
 def fninpi():
     ss=str(input("Pls input a Number :"))
     ts=''
