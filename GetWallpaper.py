@@ -18,8 +18,6 @@ wp_names = os.listdir(wp_savepath)
 for wp_name in wp_names:
     wp_name_list.append( wp_name[-8:-4] )
 
-md5=hashlib.md5()
-        
 #动态获取系统存放壁纸图片的位置
 wp_folder = os.getenv('LOCALAPPDATA')+(
     '\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy'
@@ -37,6 +35,7 @@ for wp_name in wp_names:
     if img.width<img.height:
         continue
     #hashlib作为文件名，同时判断是否已经保存了这个壁纸文件
+    md5=hashlib.md5()
     md5.update(wp_name.encode('utf-8'))
     md5_name = md5.hexdigest()
     '''转化为10进制后取后4位作为文件序号'''
