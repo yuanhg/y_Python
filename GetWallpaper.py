@@ -28,7 +28,7 @@ wp_names = os.listdir(wp_folder)
 for wp_name in wp_names:
     wp_path = os.path.join(wp_folder,wp_name)
     #文件太小则忽略
-    if (os.path.getsize(wp_path)/1024) < 300 :
+    if (os.path.getsize(wp_path)/1024) < 200 :
         continue
     #文件是竖图则忽略
     img=Image.open(wp_path)

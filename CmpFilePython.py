@@ -13,3 +13,4 @@ def pipi():
                     print("第",i+1,"位不同，正确的数字是",line1[i],"不是",line2[i])
                 
                        
+input()
