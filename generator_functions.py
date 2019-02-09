@@ -110,3 +110,48 @@ def oxxo():
     pp = filter(oio,p)
     return pp
 
+#给出一个无限长的自然数从小到大依次排列构成的字符串S：12345678910111213……，那么给定数字串S1，求它第一次出现的位置
+'''
+定义字符串生成器函数,字符串S：12345678910111213……每次返回一个数字字符s，以
+及这个数字字符是第几个自然数中的字符，n表示。也就是说，字符串生成函数返回一个list，
+第一个元素是数字字符s，第二个元素代表s是第n个自然数中数字
+'''
+def NN_String():
+        n=1
+    while True:
+        ns=str(n)  #数字转换为字符串
+        for s in ns:
+            yield (s,n)  #返回一个字符,以及这个字符在第n个自然数中
+        n += 1
+            
+#寻找匹配的数字字符串，默认是第一次匹配处
+def FN(num=1):
+    '''num表示找到几个匹配的地方'''
+    ts=input("Pls input a Number :")
+    ns=NN_String()
+    ss=''
+    '''构造第一个和输入数字字符串等长的字符串'''
+    for tts in ts:
+        sslist = next(ns)
+        ss = ss + sslist[0]
+    '''连续输出输出字符串'''
+    print(ss, end="")
+    while num >0:
+        '''如果字符串和目标字符串不匹配，字符串自动向后滑动1位，直至相等'''
+        while ss != ts:
+            sslist = next(ns)
+            nss = sslist[0]
+            nn = sslist[1]
+            print(nss,end="")
+            ss = ss[1:]+nss
+        print("")
+        print("(",ss," ) in the NUMBER:",nn)
+        num = num -1
+        '''如果num大于0，则字符串向后滑动一位，再开始下一轮比较'''
+        if num > 0:
+            nss=next(ns)
+            print(nss[0], end="")
+            ss = ss[1:]+nss[0]
+
+
+
