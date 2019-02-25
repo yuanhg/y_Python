@@ -120,21 +120,24 @@ def new_pi(numbers=1000000, lines=True,  line_num=100):
     '''读取文件'''
     try:
         with open(file_path,'r',encoding='UTF-8') as fr:
-            data = fr.read()
+            data = fr.read(numbers+2)   #考虑到“3.”，多读2位
     except FileNotFoundError:
-            print('Sorry, the file  ', file_path, ' does not exists.')
+        print('Sorry, the file  ', file_path, ' does not exists.')
     else:
         '''开始写文件'''
         with open(save_path,'w',encoding='UTF-8') as fs:
-            fs.write(data[:2])
-            if lines == True:
+            if lines == False:
+                fs.write(data)
+            else:
+                i = 2
+                fs.write(data[:2])
                 fs.write('\n')
-            for i in range(numbers):
-                fs.write(data[i+2])
-                if lines == True and (i+1)%line_num == 0:
-                    fs.write( '\n')                
+                while i < len(data):
+                    fs.write(data[i:i+line_num])
+                    fs.write('\n')
+                    i += line_num
         print('All is done')
-
+        
 
 def num_pi():
     '''此函数在10亿位π中寻找出现的次数，并打印出现的位置。'''

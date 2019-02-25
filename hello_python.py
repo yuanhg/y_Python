@@ -45,6 +45,16 @@ Namespaces are one honking great idea -- let's do more of those!
 #简单的输入输出
 print('Hello,World!')
 print('The quick brown fox',' jumps over','the lazy dog')
+message = 'python是一门神奇的语言'
+print(message)
+message = 'hello, pyThon world.'
+print(message)
+
+print(message.title())  #Hello, Python World.
+print(message.lower())  #hello, python world.
+print(message.upper())  #HELLO, PYTHON WORLD.
+
+message[12:27]  #'n world.'  字符串也可以用切片操作
 
 cars = ['bmw','Audi','toyota','suBrU']
 print(cars)
