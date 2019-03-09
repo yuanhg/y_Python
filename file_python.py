@@ -18,29 +18,10 @@ def num_pi():
         for i in range(len(words)-1):
             print("第" + str(i+1) + "次出现在数字" + words[i][-5:] + " " + word + " " + words[i+1][:3] + ";")
 
-
-
-寻找一串数字在π中的位置
-'''
-def fninpi():
-    ss=str(input("Pls input a Number :"))
-    ts=''
-    
-    with open('D:/data_files/Pi - Dec - Chudnovsky.txt','r')    as  pif:
-        for line in pif:
-            '''构造第一个和输入数字字符串等长的字符串'''
-            for i in range(len(ss)):
-                ts=ts+line[i]
-            '''如果字符串和目标字符串不匹配，字符串自动向后滑动1位，直至相等'''
-            n=len(ss)
-            num=1
-            while True:
-                if ss==ts:
-                    print("在圆周率小数点第",n-len(ss)-1,"位第",num,"次出现了",line[(n-len(ss)):n])
-                    ts=ts[1:]+line[n]
-                    num+=1
-                else:
-                    ts=ts[1:]+line[n]
-                n+=1
-            
-
+def cmp_file(file_path1,file_path2):
+    with open(file_path1,'rb') as pi1, open(file_path2,'rb') as pi2:
+        for line1 ,line2 in zip(pi1,pi2):
+            print(len(line1),len(line2))
+            for i in range(len(line2)):
+                if line1[i]!=line2[i]:
+                    print("第",i+1,"位不同，正确的数字是",line1[i],"不是",line2[i])
