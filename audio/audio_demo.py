@@ -3,34 +3,34 @@
 from audio_process import AudioProcess
 
 # 打开WAV文档
-file_path_w = 'wav\\mic_0001.wav'
-file_path_w_lf = 'wav\\mic_0001_LF.wav.wav'
-file_path_r = 'wav\\mic_0000.wav'
+file_path_w = 'wav\\mic_record.wav'
+file_path_r1 = 'wav\\mic_1001.wav'
+file_path_r2 = 'wav\\SongStero.wav'
 
+AudioProcess().playWav(file_path_r1)
+AudioProcess().playWav2(file_path_r1)
+#AudioProcess().readWav(file_path_r)
+#AudioProcess().splitChannel(file_path_r2)
+#AudioProcess().wavTimeplot(file_path_r)
+#AudioProcess().wavFftplot(file_path_r)
 
-
-#AudioProcess().playWav(file_path)
 '''
 if input('是否开始录音(y/n):')=='y':
-    AudioProcess().recordWav2(file_path_w,file_path_w_lf)
-
-
-if input('是否开始录音(y/n):')=='y':
-    if input('是否录制低频部分(y/n):')=='y':
-        AudioProcess().LFrecordWav(file_path_w_lf)
-    else:
-        AudioProcess().recordWav(file_path_w)
-
-print("*"*10, "按回车键开始播放录音……","*"*10)
-input()
+    frames, framerate, samplewidth, nchannel = AudioProcess().recordWav()
+    AudioProcess().writeWav(file_path_w, "wb",
+                                frames, framerate, samplewidth, nchannel)
+    
 '''
 
-#AudioProcess().playWav(file_path_w_lf)
-#AudioProcess().playWav(file_path_w)
+#AudioProcess().playWav(file_path_r1)
+#AudioProcess().playWav(file_path_w2)
 
-AudioProcess().plotWav(file_path_w_lf)
-AudioProcess().plotWav(file_path_w)
+#AudioProcess().wavTimeplot(file_path_r1)
+#AudioProcess().wavTimeplot(file_path_r2)
 
-#AudioProcess().plotWav(file_path_r)
+#AudioProcess().wavFftplot(file_path_r1)
+#AudioProcess().wavFft(file_path_r1)
+#AudioProcess().wavFftplot(file_path_r2)
+#AudioProcess().wavFft(file_path_r2)
 
-#AudioProcess().readWavLF(file_path_w,file_path_w_lf)
+

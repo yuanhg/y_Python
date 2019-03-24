@@ -8,7 +8,7 @@ import math
 
 
 # 打开WAV文档
-f = wave.open("wav\\mic_record.wav")
+f = wave.open("wav\\mic_1001.wav")
 # 读取格式信息
 # (nchannels, sampwidth, framerate, nframes, comptype, compname)
 params = f.getparams()
@@ -136,13 +136,15 @@ for n in range(0, Nframes):
         x_old = xi[0 + len1:len_]
         k = k + len2
 # 保存文件
-wf = wave.open('wav\\mic_record_enhanced.wav', 'wb')
+wf = wave.open('wav\\_enhanced.wav', 'wb')
 # 设置参数
 wf.setparams(params)
 # 设置波形文件 .tostring()将array转换为data
 wave_data = (winGain * xfinal).astype(np.short)
 wf.writeframes(wave_data.tostring())
 wf.close()
+
+
 
 
 
