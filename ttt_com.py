@@ -4,8 +4,8 @@
 
 # main data
 #0表示未落子，1表示x落子，-1表示o落子，初始没有落子
-xo_lock  = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0}
-xo_value = {1:3,2:2,3:3,4:2,5:4,6:2,7:3,8:2,9:3}
+#xo_lock  = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0}
+#xo_value = {1:3,2:2,3:3,4:2,5:4,6:2,7:3,8:2,9:3}
 
 # 使用字典initial map data
 ttt = {}
@@ -149,49 +149,61 @@ def availablepoint():
     return ap
 
 #开始运行程序
-initialttt()
-showttt()
 
-player = 'x'
 
-while True :
-    if player == 'x':
-        #检查可选剩余可选数字
-        nums = []
-        for i in range(1,10):
-            if ttt[dt[i]] == i :
-                nums.append(i)
-        if nums == []:
-            print("平局")
-            break
-
-        print('请选手选择落子处的数字：', end='')
-        playnum = int(input())
-        if playnum not in nums:
-              continue
-        ttt[dt[playnum]] = 'X'
-        #showttt()
-        lockrevalue(playnum, player)
-
-        if checkwin() == 1:
-            print('选手 赢')
-            break
-
-        player = 'o'
-        
-    if player == 'o':
-        playnum = availablepoint()
-        if playnum == 0:
-            print('平局')
-            break
-            
-        print('计算机选择（%s)落子' %(playnum))
-        ttt[dt[playnum]] = 'Q'
-        showttt()
-        lockrevalue(playnum,player)
-
-        if checkwin() == -1:
-            print('计算机 赢')
-            break
-
+while True:
+    print("请选择先手，输入x代表选手先走，输入o代表计算机先走，输入q退出游戏：")
+    playerturn = input("请输入 x / o / q ：")
+    xo_lock  = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0}
+    xo_value = {1:3,2:2,3:3,4:2,5:4,6:2,7:3,8:2,9:3}
+    if playerturn == 'x':
         player = 'x'
+        initialttt()
+    elif playerturn == 'o':
+        player = 'o'
+        initialttt()
+    else:
+        break
+    showttt()
+
+    while True:
+        if player == 'x':
+            #检查可选剩余可选数字
+            nums = []
+            for i in range(1,10):
+                if ttt[dt[i]] == i :
+                    nums.append(i)
+            if nums == []:
+                print("平局")
+                break
+
+            print('请选手选择落子处的数字：', end='')
+            playnum = int(input())
+            if playnum not in nums:
+                  continue
+            ttt[dt[playnum]] = 'X'
+            #showttt()
+            lockrevalue(playnum, player)
+
+            if checkwin() == 1:
+                print('选手 赢')
+                break
+            player = 'o'
+
+        if player == 'o':
+            playnum = availablepoint()
+            if playnum == 0:
+                print('平局')
+                break
+            
+            print('计算机选择（%s)落子' %(playnum))
+            ttt[dt[playnum]] = 'Q'
+            #showttt()
+            lockrevalue(playnum,player)
+
+            if checkwin() == -1:
+                print('计算机 赢')
+                break
+            player = 'x'
+            
+        showttt()
