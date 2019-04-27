@@ -42,7 +42,7 @@ class Board(object):
             '''打印该行棋盘'''    
             for j in range(self.width):
                 if self.ox[i][j] == 0:    #未落子
-                    print(' .  ', end='')
+                    print(' ~  ', end='')
                 elif self.ox[i][j] == 1:   # x 落子
                     print(' X  ', end='')
                 elif self.ox[i][j] == -1:  # o 落子
