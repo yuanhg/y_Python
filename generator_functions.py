@@ -23,21 +23,7 @@ def Even_Number():
         yield i
         i += 2
 
-#素数函数生成器
-def _not_divisible(n):
-    return lambda x: x % n >0
-
-def Primes_Number():
-    it = Odd_Number()   #初始序列,1开始的奇数列
-    while True:
-        n = next(it)
-        if n==1:
-            n = next(it)  # 去掉1
-        it = filter(_not_divisible(n),it) #构造新的序列,筛除能被第一个数n整除的数
-#        it = filter(lambda x: x%n>0,it)   #此语句lambda不能使用估计是变量n的原因
-        yield n
       
-
 #杨辉三角
 def YHtriangles(layer=13):
     triangles=[1]
@@ -57,7 +43,7 @@ def YHtriangles():
         triangles=[ sum(i) for i in zip( [0]+triangles, triangles+[0] ) ]
 
 
-#求自然数中第xxx个素数
+##素数函数生成器，求自然数中第xxx个素数
 def _odd_iter():
     n = 1
     while True:
@@ -73,7 +59,7 @@ def primes():
     while True:
         n = next(it)
         yield n
-        it = filter(_not_divisible(n),it) #构造新的序列
+        it = filter(_not_divisible(n),it) #构造新的序列，筛除能被第一个数n整除的数
 
 def primesNo(x):  #打印出第x个素数
     i=0
@@ -91,11 +77,12 @@ def primesNo2(x):  #打印出第x个素数
             break
     print(n)
 
+'''
 #回数是指从左向右读和从右向左读都是一样的数，例如12321，909。
 #请利用filter()筛选出回数
-
+'''
 def o_iter():
-    i=0
+    i=1
     while True:
         i+=1
         yield i
@@ -110,8 +97,10 @@ def oxxo():
     pp = filter(oio,p)
     return pp
 
-#给出一个无限长的自然数从小到大依次排列构成的字符串S：12345678910111213……，那么给定数字串S1，求它第一次出现的位置
+
 '''
+#给出一个无限长的自然数从小到大依次排列构成的字符串S：12345678910111213……，那么给定数字串S1，求它第一次出现的位置
+
 定义字符串生成器函数,字符串S：12345678910111213……每次返回一个数字字符s，以
 及这个数字字符是第几个自然数中的字符，n表示。也就是说，字符串生成函数返回一个list，
 第一个元素是数字字符s，第二个元素代表s是第n个自然数中数字

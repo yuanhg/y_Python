@@ -42,6 +42,7 @@ If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
 命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）
 '''
+##################################
 #简单的输入输出
 print('Hello,World!')
 print('The quick brown fox',' jumps over','the lazy dog')
@@ -61,8 +62,46 @@ print(cars)
 
 
 name = input('Please enter your name: ')
-print('Hello,',nname)
+print('Hello,',name)
 
+def mult99():
+    '''#打印9*9乘法表'''
+    for i in range(9):
+        for j in range(i+1):
+            print(j+1,"*",i+1,"=",(j+1)*(i+1)," ", end="")
+            if (j+1)*(i+1)<10:
+                print(" ",end="")
+        print("")
+
+def tree():
+    '''#用*号输出圣诞树图案'''
+    for i in range(10):
+        for j in range(20):
+            print(" ",end="")
+        for j in range(9-i):
+            print(" ",end="")
+        for j in range(1,2*i):
+            print("*",end="")
+        print("")
+    for i in range(5):
+        for j in range(28):
+            print(" ",end="")
+        print("*")
+
+def div9():
+    '''用 1 到 9 组成一个九位数，使得这个数的第一位能被 1 整除，前两位组成的两位数能被 2 整除，以此类推，一直到整个九位数能被 9 整除。'''
+    '''算法一：使用字符串方式，逐个找出符合条件的N位数，直到9位数'''
+    n=[["1","2","3","4","5","6","7","8","9"]]
+    for i in range(1,9):
+        n.append([])
+    for i in range(1,9):
+        for j in n[i-1]:
+            for k in n[0]:
+                if k not in j and int(j+k)%(i+1)==0:                    
+                    n[i].append(j+k)
+    for i in range(9):
+        print(n[i])
+#######################################
 #编码
 s = 'Python-中文'
 print(s)
@@ -160,7 +199,7 @@ print(L[1][-2:])
 #一球从100米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第10次落地时，共经过多少米？第10次反弹多高？
 #个人所得税扣除
 #把列表L的单词第一个字母大写，并生成一个字典
-#1.波那契数列。1，1，2，3，5。。每一项都是前二项的和；（兔子问题）
+
 #2.卢卡斯数列：4，14，194，37634，。。。每一项都是前一项的平方减二；
 #3.费马数列：3，5，17，257，65537，。。。，每一项都可表为 2^(2^n) + 1 ；
 
@@ -179,8 +218,7 @@ print(L[1][-2:])
 ### 【自幂数】
 > 自幂数是指一个 n 位数，它的每个位上的数字的 n 次幂之和等于它本身。（例如：当n为3时，有1^3 + 5^3 + 3^3 = 153，153即是n为3时的一个自幂数）；
 > 自幂数包括：独身数、水仙花数、四叶玫瑰数、五角星数、六合数、北斗七星数、八仙数、九九重阳数、十全十美数 
-### 【对称（回）数】
-> 一个整数，它的各位数字如果是左右对称的，则称这个数是对称数。也称之为回数，就是倒着读和正着读一样的数 
+
 
 
 ### 【亲和数】 
