@@ -35,40 +35,36 @@ def wd(n=27):
     return Pi
 
 
-def wls():
+def wls(i = 10):
     '''
     #π沃利斯公式 π/2=2*2/1*3 4*4/3*5 6*6/5*7 ……
-    #27362787时收敛到3.1415926 2456 4901 3
     '''
     Pi_N=1
-    Pi =2*10**15
+    Pi =10**(i+10)
     n=2
-    i=0
     while Pi != Pi_N:
         Pi_N=Pi
-        Pi = Pi*n*n/(n-1)/(n+1)
+        Pi *= n*n/((n-1)*(n+1))
         n=n+2
-        i += 1
-    return Pi,i
+    return 2*Pi//10**10
 
 
-def  gllb(n=10):
+def  gllb(n=5):
     '''
     #π格雷戈里-莱布尼茨级数：
     #公式：  π= (4/1) - (4/3) + (4/5) - (4/7) + (4/9) - (4/11) + (4/13) - (4/15) ...
     '''
     pi=0
-    p=10**(n+10)
+    p=4*10**(n+10)
     i=1
     f=1
-    while f :
-        f=p//i-p//(i+2)
-        pi=pi+f
+    while abs(f) :
+        a=p//i
+        b=p//(i+2)
+        f=a-b
+        pi += f
         i +=4
-        print(4*pi,end='\r')
-    print()
-    print(4*pi)
-    return 4*pi//10**10
+    return pi//10**10
 
 
 def nila(n=10):
@@ -78,14 +74,11 @@ def nila(n=10):
     p=10**(n+10)
     i=2
     f=1
-    while f:
+    while abs(f):
         f=p//(i*(i+1)*(i+2))-p//((i+2)*(i+3)*(i+4))
         Pi=Pi+f
         i=i+4
-        print(4*Pi,end='\r')
-    print()
-    print(4*Pi)
-    return 4*Pi//10**10+3*10**n
+    return 4*Pi//10**10+3*10**10
 
 
 def maqing(n=100):
