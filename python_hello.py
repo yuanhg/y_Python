@@ -131,8 +131,28 @@ print(L[2][2])
 lisa
 print(L[1][-2:])
 ['phthon', 'php']
-#把列表L的单词第一个字母大写，并生成一个字典
 
+#遍历L
+def lis(z):
+    for i in z:
+        if isinstance(i,list):
+            lis(i)
+        else:
+            print(i)
+
+>>> lis(L)
+apple
+google
+microsoft
+java
+phthon
+php
+adam
+bart
+lisa
+#把列表L的单词第一个字母大写，并生成一个字典
+[v.capitalize() for vec in L for v in vec]
+['Apple', 'Google', 'Microsoft', 'Java', 'Phthon', 'Php', 'Adam', 'Bart', 'Lisa']
 
 #######################################
 # reduce用法
@@ -187,6 +207,32 @@ def n_s(n=15):
                 break
     return n_list
     
-    
+'''
+用一行代码就把 109 张图片读到了一个 109x256x256x4 的 numpy 数组中，耗时 172 毫秒
+data = np.stack([np.array(Image.open('head%d.png'%i)) for i in range(109)], axis=0)
+
+data = list
+for i in range(109):
+img = Image.open('head%d.png'%i)
+img = np.array(img)
+data.append(img)
+data = np.stack(data, axis=0)
+
+一行代码打印乘法口诀
+print('\n'.join([' '.join(["%2s x%2s = %2s"%(j,i,i*j) for j in range(1,i+1)]) for i in range(1,10)]))
+
+一行代码打印迷宫
+print(''.join(__import__('random').choice('\\u2571\\u2572') for i in range(50*24)))
+
+一行代码表白爱情
+print('\n'.join([''.join([('Love'[(x-y) % len('Love')]
+    if ((x*0.05)**2+(y*0.1)**2-1)**3-(x*0.05)**2*(y*0.1)**3 <= 0else' ')
+    for x in range(-30, 30)]) for y in range(30, -30, -1)]))
+
+一行代码打印小龟龟
+print('\n'.join([''.join(['*' if abs((lambda a:lambda z,c,n:a(a,z,c,n))
+    (lambda s,z,c,n:z if n==0 else s(s,z*z+c,c,n-1))(0,0.02*x+0.05j*y,40))<2 else ' '
+    for x in range(-80,20)]) for y in range(-20,20)]))
+'''
 
 
