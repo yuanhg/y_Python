@@ -20,9 +20,20 @@ message[12:27]  #'n world.'  字符串也可以用切片操作
 cars = ['bmw','Audi','toyota','suBrU']
 print(cars)
 
+a = {'a':1,'b':2,'c':3}
+b = {'aa':11,'bb':22,'cc':33}
+dict(a,**b)
+
+c={}
+c.update(a)
+c.update(b)
 
 name = input('Please enter your name: ')
 print('Hello,',name)
+
+#时间戳（timestamp），特定的时刻。
+#固定时期（period），如2007年1月或2010年全年。
+#时间间隔（interval），由起始和结束时间戳表示。时期（period）可以被看做间隔（interval）的特例。
 
 def mult99():
     '''#打印9*9乘法表'''
@@ -32,6 +43,8 @@ def mult99():
             if (j+1)*(i+1)<10:
                 print(" ",end="")
         print("")
+
+print("\n".join("\t".join(["%s*%s=%s"%(y, x, x*y) for y in range(1, x+1)]) for x in range(1, 10)))
 
 def tree():
     '''#用*号输出圣诞树图案'''
@@ -59,8 +72,9 @@ def div9():
             for k in n[0]:
                 if k not in j and int(j+k)%(i+1)==0:                    
                     n[i].append(j+k)
-    for i in range(9):
-        print(n[i])
+    #for i in range(9):
+    #    print(n[i])
+    print(n[8])
 #######################################
 #编码
 s = 'Python-中文'
