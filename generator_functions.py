@@ -64,9 +64,6 @@ def pefect_number():
             yield i
         i +=1
         
-'''
->
-'''
         
 #杨辉三角
 def YHtriangles(layer=13):
