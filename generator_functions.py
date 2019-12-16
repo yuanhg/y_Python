@@ -75,6 +75,15 @@ def YHtriangles(layer=13):
         layer-=1
     return "done"
 
+#杨辉三角
+def YHtriangles(layer=13):
+    triangles=[1]
+    while layer:
+        print(triangles)
+        triangles=[ sum(i) for i in zip( [0]+triangles, triangles+[0] ) ]
+        layer-=1
+    return "done"
+
 #杨辉三角generator
 def YHtriangles():
     triangles=[1]
