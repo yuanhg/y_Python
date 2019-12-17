@@ -75,7 +75,30 @@ def div9():
     #for i in range(9):
     #    print(n[i])
     print(n[8])
-#######################################
+
+
+#4位数经过7步之内的减法，得到6174这个神奇的数字
+def m6174():
+    num4 = []
+    for i in range(1234, 9877):
+        k = len(set(str(i)))
+        if k == 4:
+            num4.append(i)
+    print("没有重复数字的4位数总共有： ", len(num4))
+    num6174 = []
+    for number in num4:
+       num_list = list(number)
+       num_list.sort()
+       num_low = int(''.join(num_list))
+       num_list.sort(reverse=True)
+       num_high = int(''.join(num_list))
+       if num_high - num_low == 6174:
+           num6174.append(num_high - num_low)
+    print("一次减法得到6174的4位数有： ", len(num6174))
+    print(num6174)
+    
+    
+    
 #编码
 s = 'Python-中文'
 print(s)
@@ -154,7 +177,7 @@ def lis(z):
         else:
             print(i)
 
->>> lis(L)
+list(L)
 apple
 google
 microsoft
