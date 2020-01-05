@@ -22,11 +22,11 @@ def Even_Number():
     while True:
         yield i
         i += 2
-'''
-#自然数列求和，平方和，立方和，
-'''
+
 import math
 def  n_sum(n=10):
+    '''#自然数列求和，平方和，立方和，
+    '''
     i, j, k = 0, 0, 0
     num = Natural_Number()
     for _ in range(n):
@@ -38,10 +38,16 @@ def  n_sum(n=10):
 
 '''
 > 亲和数Amicable Pair是一种古老的数。 [2] 
-> 在遥远的古代，人们发现某些自然数之间有特殊的关系：如果两个数a和b，a的所有除本身以外的因数approximate number之和等于b，b的所有除本身以外的因数之和等于a，则称a,b是一对亲和数。古希腊毕达哥拉斯发现的220与284；费马发现了另一对相亲数：17296和18416；笛卡儿也发现了一对相亲数：9363584和9437056；欧拉也研究过相亲数这个课题。1750年，他一口气向公众抛出了60对相亲数：2620和2924，5020和5564，6232和6368，……，从而引起了轰动。1866年，年方16岁的意大利青年巴格尼尼发现1184与1210是仅仅比220与284稍为大一些的第二对相亲数。
-目前，人们已找到了12,000,000多对相亲数。但相亲数是否有无穷多对，相亲数的两个数是否都是或同是奇数，或同是偶数，而没有一奇一偶等，这些问题还有待继续探索
->如果a的约数和等于a，就称a为完美数pefect number
->第一个完全数是6，第二个完全数是28，第三个完全数是496，后面的完全数还有8128、33550336等等。
+> 在遥远的古代，人们发现某些自然数之间有特殊的关系：如果两个数a和b，a的所有除本身以外的
+> 因数approximate number之和等于b，b的所有除本身以外的因数之和等于a，则称a,b是一对亲和数。
+> 古希腊毕达哥拉斯发现的220与284；费马发现了另一对相亲数：17296和18416；笛卡儿也发现了
+> 一对相亲数：9363584和9437056；欧拉也研究过相亲数这个课题。1750年，他一口气向公众抛出了
+> 60对相亲数：2620和2924，5020和5564，6232和6368，……，从而引起了轰动。
+> 1866年，年方16岁的意大利青年巴格尼尼发现1184与1210是仅仅比220与284稍为大一些的第二对相亲数。
+> 目前，人们已找到了12,000,000多对相亲数。但相亲数是否有无穷多对，相亲数的两个数是否都是
+> 或同是奇数，或同是偶数，而没有一奇一偶等，这些问题还有待继续探索
+> 如果a的约数和等于a，就称a为完美数pefect number
+> 第一个完全数是6，第二个完全数是28，第三个完全数是496，后面的完全数还有8128、33550336等等。
 '''
 def appro_num_sum(n):
     appro_list = []
@@ -66,7 +72,7 @@ def pefect_number():
         
         
 #杨辉三角
-def YHtriangles(layer=13):
+def YHtriangles_1(layer=13):
     triangles=[1]
     while layer:
         print(triangles)
@@ -76,7 +82,7 @@ def YHtriangles(layer=13):
     return "done"
 
 #杨辉三角
-def YHtriangles(layer=13):
+def YHtriangles_2(layer=13):
     triangles=[1]
     while layer:
         print(triangles)
@@ -85,7 +91,7 @@ def YHtriangles(layer=13):
     return "done"
 
 #杨辉三角generator
-def YHtriangles():
+def gener_YHtriangles():
     triangles=[1]
     while True:
         yield triangles
@@ -108,7 +114,7 @@ def primes():
     while True:
         n = next(it)
         yield n
-        it = filter(not_divisible(n), it)    #构造新的序列，筛除能被第一个数n整除的数
+        it = filter(_not_divisible(n), it)    #构造新的序列，筛除能被第一个数n整除的数
 
 def primesNo(x):  #打印出第x个素数
     i=0
@@ -118,13 +124,6 @@ def primesNo(x):  #打印出第x个素数
         i+=1
     print(n)
 
-def primesNo2(x):  #打印出第x个素数
-    i=1
-    for n in primes():
-        i+=1
-        if i>x:
-            break
-    print(n)
 
 '''
 #回数是指从左向右读和从右向左读都是一样的数，例如12321，909。
@@ -146,6 +145,7 @@ def oxxo():
     pp = filter(oio,p)
     return pp
 
+
 '''
 #卢卡斯数列：4，14，194，37634，。。。每一项都是前一项的平方减二；
 '''
@@ -158,7 +158,6 @@ def lucas_sequence():
 '''
 #费马数列：3，5，17，257，65537，。。。，每一项都可表为 2^(2^n) + 1 ；
 '''
-import math
 def fermat_number():
     i = 1
     while True:
@@ -170,6 +169,7 @@ def fermat_number():
 #若一个自然数各位数字之和与各位数字之积的和恰好等于这个自然数，把这样的自然数叫做“幸运数”
 #19,29,~.99, 没有大于100的幸运数
 '''
+from functools import reduce
 def luck_n():
     i = 10
     while True:
@@ -191,7 +191,7 @@ def luck_n():
 第一个元素是数字字符s，第二个元素代表s是第n个自然数中数字
 '''
 def NN_String():
-        n=1
+    n=1
     while True:
         ns=str(n)  #数字转换为字符串
         for s in ns:

@@ -193,17 +193,17 @@ lisa
 
 #######################################
 # reduce用法
-1、求listE = [1,2,3,4,5]所有元素之和
+#1、求listE = [1,2,3,4,5]所有元素之和
 print(reduce(lambda x,y:x + y, listE))
 15
 
-2、求listE = [1,2,3,4,5]所有元素中最大值或者最小值
+#2、求listE = [1,2,3,4,5]所有元素中最大值或者最小值
 print(reduce(lambda x,y:x if x>y else y, listE))
 5
 print(reduce(lambda x,y:x if x<y else y, listE))
 1
 
-3、求stringsE = ['abc','abcd','def']中'abc'出现的总次数
+#3、求stringsE = ['abc','abcd','def']中'abc'出现的总次数
 print(reduce(lambda count, str:count + str.count('abc'), stringsE, 0))
 2
 
@@ -219,14 +219,13 @@ print(reduce(lambda count, str:count + str.count('abc'), stringsE, 0))
 #一球从100米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在第10次落地时，共经过多少米？第10次反弹多高？
 #个人所得税扣除
 
-'''
+''' 
 
-
-'''   
-#一个正整数有可能表示为n个连续正整数之和，如15=1+2+3+4+5，15=7+8等。
-#那么给定一个正整数，找出所有连续正整数序列
-'''    
+ 
 def n_s(n=15):
+    '''#一个正整数有可能表示为n个连续正整数之和，如15=1+2+3+4+5，15=7+8等。
+    #那么给定一个正整数，找出所有连续正整数序列
+    '''
     n_list = []
     for i in range(1, n//2+1):
         t_list = [i]       
@@ -240,10 +239,11 @@ def n_s(n=15):
             if t > n: break
             if t == n:
                 t_list.append(j)
-                n_list.append(t_l)
+                n_list.append(t_list)
                 break
     return n_list
-    
+ 
+
 '''
 用一行代码就把 109 张图片读到了一个 109x256x256x4 的 numpy 数组中，耗时 172 毫秒
 data = np.stack([np.array(Image.open('head%d.png'%i)) for i in range(109)], axis=0)
@@ -273,3 +273,37 @@ print('\n'.join([''.join(['*' if abs((lambda a:lambda z,c,n:a(a,z,c,n))
 '''
 
 
+# Gather our code in a main() function
+import argparse
+def main():
+    # create parser
+    descStr = """
+    This program analyzes args .
+    """
+    parser = argparse.ArgumentParser(description=descStr)
+    # add a mutually exclusive group of arguments
+    group = parser.add_mutually_exclusive_group()
+
+    # add expected arguments
+    group .add_argument('--common', nargs = '*', dest='plFiles', required=False)
+    group .add_argument('--stats', dest='plFile', required=False)
+    group .add_argument('--dup', dest='plFileD', required=False)
+
+    # parse args
+    args = parser.parse_args()
+
+    if args.plFiles:
+        # find common tracks
+        findCommonTracks(args.plFiles)
+    elif args.plFile:
+        # plot stats
+        plotStats(args.plFile)
+    elif args.plFileD:
+        # find duplicate tracks
+        findDuplicates(args.plFileD)
+    else:
+        print("These are not the tracks you are looking for.")
+
+# main method
+if __name__ == '__main__':
+    main()
