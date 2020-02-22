@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[17]:
-
-
 import json
 
 from datetime import datetime
@@ -11,15 +8,13 @@ import calendar
 import tkinter as tk
 from tkinter import ttk
 
-from tkinter.tix import Tk, Control, ComboBox, Button, Balloon, Label, Entry #升级的组合控件包
+from tkinter.tix import Tk, Button, Balloon, Label, Entry #升级的组合控件包
 
-from tkinter.messagebox import showinfo, showwarning, showerror #各种类型的提示框
+#from tkinter.messagebox import showinfo, showwarning, showerror #各种类型的提示框
 from tkinter.constants import *
 
 import tkinter.font as tkFont
 
-
-# In[18]:
 
 
 def trading_days(dt1, dt2):
@@ -59,13 +54,10 @@ def trading_days(dt1, dt2):
     return trading_days
 
 
-# In[19]:
-
-
-#import json
-#如果没有days.json文件，则创建；如有，则读入
+#如果没有bull_bear_days.json文件，则创建；如有，则读入
 try:
-    with open('C://Users//faqui//Documents//github//y_Python//bull_bear_days.json', 'r') as f:
+    with open('bull_bear_days.json', 'r') as f:     
+#    with open('C://Users//faqui//Documents//github//y_Python//bull_bear_days.json', 'r') as f:
         bull_bear_days = json.load(f)
 except FileNotFoundError:
     bull_bear_days = {
@@ -75,13 +67,11 @@ except FileNotFoundError:
         'bull_bear_day': ['2020-01-01',]
         }
 
-    with open('C://Users//faqui//Documents//github//y_Python//bull_bear_days.json', 'w') as f:
+    with open('bull_bear_days.json', 'w') as f:
+#    with open('C://Users//faqui//Documents//github//y_Python//bull_bear_days.json', 'w') as f:
         json.dump(bull_bear_days, f)
 else:
     pass
-
-
-# In[20]:
 
 
 root = Tk() # 初始化Tk()  root便是你布局的根节点了，以后的布局都在它之上
@@ -104,9 +94,6 @@ root.tk.eval('package require Tix') #引入升级包，这样才能使用升级�
 #创建一个状态显示标签
 info_status = Label(root, width=300, relief=GROOVE, font=("Arial",13), fg='red', bd=1, anchor = SW)
 info_status.place(x=0,y=0, relx=0/20,rely=7/8, relwidth=20/20,relheigh=3/30,anchor=NW)
-
-
-# In[21]:
 
 
 class Calendar:
@@ -396,9 +383,6 @@ class Calendar:
             return False
 
 
-# In[22]:
-
-
 def set_var(date_str_now):
     global date_str, bull_bear_days
     #button的变量
@@ -470,10 +454,6 @@ def set_var(date_str_now):
         bull_label_fg = 'Black'
         
 
-
-# In[23]:
-
-
 date = datetime.now()
 date_str_now = date.strftime( '%Y-%m-%d' )
 
@@ -488,9 +468,6 @@ bull_bear_text = tk.StringVar()
 
 #设置按钮、色条等参数
 set_var(date_str_now)
-
-
-# In[24]:
 
 
 #实现日期选择按钮，以及日期输入。通过气球和状态栏说明操作说明
@@ -571,7 +548,8 @@ def set_json():
         bull_bear_days['bull_bear'] = bull_bear_str
         bull_bear_days['bull_bear_day'].append(date_str.get())
         
-        with open('C://Users//faqui//Documents//github//y_Python//bull_bear_days.json', 'w') as f:
+        with open('bull_bear_days.json', 'w') as f:       
+#        with open('C://Users//faqui//Documents//github//y_Python//bull_bear_days.json', 'w') as f:
             json.dump(bull_bear_days, f)
         
     root.destroy()
@@ -581,10 +559,4 @@ quit_button = Button(root, text = '保存退出:', command = set_json,
                     ).place(x=0,y=0, relx=2/20,rely=6/8, relwidth=3/20,relheigh=3/30)    
 
 root.mainloop()
-
-
-# In[ ]:
-
-
-
 
